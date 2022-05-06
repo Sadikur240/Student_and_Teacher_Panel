@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ManageBlood">
+
+    <Button
+        android:id="@+id/aPositive"
+        android:layout_width="117dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="156dp"
+        android:fontFamily="@font/robotocondensedbold"
+        android:text="A+"
+        android:textColor="@color/purple_200"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bPositive"
+        android:layout_width="117dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="156dp"
+        android:fontFamily="@font/robotocondensedbold"
+        android:text="B+"
+        android:textColor="@color/purple_200"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.412"
+        app:layout_constraintStart_toEndOf="@+id/aPositive"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/oPositive"
+        android:layout_width="117dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="36dp"
+        android:text="O+"
+        android:textSize="32sp"
+        android:textColor="@color/purple_200"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aPositive" />
+
+    <Button
+        android:id="@+id/abPositive"
+        android:layout_width="117dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="36dp"
+        android:text="AB+"
+        android:textSize="32sp"
+        android:textColor="@color/purple_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.412"
+        app:layout_constraintStart_toEndOf="@+id/aPositive"
+        app:layout_constraintTop_toBottomOf="@+id/bPositive" />
+
+    <Button
+        android:id="@+id/bNegative"
+        android:layout_width="117dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="36dp"
+        android:text="b-"
+        android:textSize="32sp"
+        android:textColor="@color/purple_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.412"
+        app:layout_constraintStart_toEndOf="@+id/oPositive"
+        app:layout_constraintTop_toBottomOf="@+id/abPositive" />
+
+    <Button
+        android:id="@+id/aNegative"
+        android:layout_width="117dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="36dp"
+        android:text="A-"
+        android:textSize="32sp"
+        android:textColor="@color/purple_200"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/oPositive" />
+
+    <Button
+        android:id="@+id/oNegative"
+        android:layout_width="117dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="36dp"
+        android:text="O-"
+        android:textSize="32sp"
+        android:textColor="@color/purple_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aNegative"
+        app:layout_constraintVertical_bias="0.005" />
+
+    <Button
+        android:id="@+id/abNegative"
+        android:layout_width="117dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="36dp"
+        android:text="ab-"
+        android:textSize="32sp"
+        android:textColor="@color/purple_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.412"
+        app:layout_constraintStart_toEndOf="@+id/oNegative"
+        app:layout_constraintTop_toBottomOf="@+id/bNegative"
+        app:layout_constraintVertical_bias="0.01" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
