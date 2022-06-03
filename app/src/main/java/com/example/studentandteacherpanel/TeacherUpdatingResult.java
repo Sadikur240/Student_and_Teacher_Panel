@@ -1,6 +1,8 @@
 package com.example.studentandteacherpanel;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -11,10 +13,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TeacherUpdatingResult extends AppCompatActivity implements View.OnClickListener {
     private TextView resultText;
     private EditText studentId, newResult;
     private Button update;
+    private List<ModerOfUpdatingResult> studentList;
+    private AdapterOfUpdatingResult adapter;
+    private RecyclerView recyclerView;
+    private LinearLayoutManager layoutManager;
     Cursor cursor;
     int flag=-1;
     StudentDataBaseHelper studentDataBaseHelper;
@@ -23,16 +32,28 @@ public class TeacherUpdatingResult extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_teacher_updating_result);
-        resultText=findViewById(R.id.tUpdatingResultText);
         studentId=findViewById(R.id.tUpdatingResultStudentId);
         newResult=findViewById(R.id.tUpdatingResultNewResult);
         update=findViewById(R.id.tUpdatingResultButton);
         studentDataBaseHelper=new StudentDataBaseHelper(this);
         result();
+
         update.setOnClickListener(this);
 
     }
-public void result(){
+
+    private void recyclerViewUpdate() {
+        recyclerView=findViewById(R.id.recyclerView);
+        layoutManager=new LinearLayoutManager(this);
+        layoutManager.setOrientation(RecyclerView.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        adapter=new AdapterOfUpdatingResult(studentList);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+    }
+
+    public void result(){
         cursor=studentDataBaseHelper.getData();
     if(cursor.getCount()==0){
         resultText.setText("No student yet.");
@@ -41,21 +62,16 @@ public void result(){
         update.setEnabled(false);
     }
     else{
-        String sx="                                      ";
-        String sx1="                             ";
-        String string="     "+"ID"+sx+"RESULT"+"\n";
-        StringBuffer stringBuffer=new StringBuffer();
-
+        studentList=new ArrayList<>();
         while(cursor.moveToNext()){
-            String x="  ---";
             if(Double.parseDouble(cursor.getString(8))==-1){
-                stringBuffer.append(cursor.getString(0)+sx1+x+"\n");
+                studentList.add(new ModerOfUpdatingResult(cursor.getString(0)+"","---"));
             }
-                else{stringBuffer.append(cursor.getString(0)+sx1+cursor.getString(8)+"\n");}
+                else{
+                studentList.add(new ModerOfUpdatingResult(cursor.getString(0)+"",cursor.getString(8)+""));
+                }
         }
-        string=string+stringBuffer;
-        resultText.setText(string);
-
+        recyclerViewUpdate();
     }
 }
     @Override
